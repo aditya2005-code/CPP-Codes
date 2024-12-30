@@ -129,7 +129,7 @@ public:
         tail = temp;
     }
 
-    // Pop at a specific position
+    // Pop at a specific position0                  
     void pop_pos(int pos) {
         if (head == NULL) {
             cout << "Empty linked list" << endl;
