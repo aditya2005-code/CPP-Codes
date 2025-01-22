@@ -1,33 +1,31 @@
-#include<iostream> 
+#include<iostream>
 #include<vector>
+#include<list>
 using namespace std;
 
 template<class T>
 class Stack{
-    vector<T> vec;
+    list<T> ll;
     public:
 
-    void push(T val){
-        vec.push_back(val);
+    void push( T val){
+        ll.push_front(val);
     }
+
     void pop(){
-        if(isEmpty()){
-            cout<<"underflow"<<endl;
+        if( ll.size() == 0){
+            cout<<"Empty Stack"<<endl;
             return;
         }
-        vec.pop_back();
+        ll.pop_front();
     }
-    T top(){
-        if (isEmpty()) {
-            throw runtime_error("Stack is empty");
-        }
-        int idx = vec.size()-1;
 
-        return vec[idx];
+    T top(){
+        return ll.front();
     }
 
     bool isEmpty(){
-        return vec.size() == 0;
+        return ll.size() == 0;
     }
 };
 
@@ -45,3 +43,5 @@ int main(){
     cout<<s.top()<<endl;
     return 0;
 }
+
+
