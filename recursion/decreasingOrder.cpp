@@ -7,6 +7,14 @@ void isPrint(int n){
     }
     cout<<n<<" ";
     isPrint(n-1);
+
+}
+void isPrintIncreasing(int n){
+    if(n == 0){
+        return;
+    }
+    isPrintIncreasing(n-1);
+    cout<<n<<" ";
     
 }
 
@@ -16,6 +24,8 @@ int main(){
     cin>>n;
 
     isPrint(n);
+    cout<<endl;
+    isPrintIncreasing(n);
 
     return 0;
 }
