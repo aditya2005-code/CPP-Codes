@@ -1,0 +1,21 @@
+#include<iostream>
+using namespace std;
+
+void isPrint(int n){
+    if(n == 0){
+        return;
+    }
+    cout<<n<<" ";
+    isPrint(n-1);
+    
+}
+
+int main(){
+    int n ;
+    cout<<"Enter the valur of n:";
+    cin>>n;
+
+    isPrint(n);
+
+    return 0;
+}
