@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <unistd.h>
 
-void bubbleSort(int arr[][6], int n, int col) {
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
+void bubbleSort(int arr[][6], int n, int col , int srow) {
+    for (int i = srow; i < n - 1; i++) {
+        for (int j = srow; j < n - i - 1; j++) {
             if (arr[j][col] > arr[j + 1][col]) {
                 for (int k = 0; k < 6; k++) {
                     int temp = arr[j][k];
@@ -42,6 +42,20 @@ void FCFS(int arr[][6],int n){
         arr[i][5] = arr[i][4] - arr[i][2];
     }
 }
+//Non preemtive
+void SJF(int arr[][6] , int n){
+    arr[0][3] = arr[0][2] + arr[0][1];
+    arr[0][4] = arr[0][3] - arr[0][1];
+    arr[0][5] = arr[0][4] - arr[0][2];
+
+    bubbleSort(arr,n,2,1);
+    for(int i=1 ; i<n ; i++){
+        arr[i][3] = arr[i-1][3]+arr[i][2];
+    
+       arr[i][4] = arr[i][3] - arr[i][1];
+       arr[i][5] = arr[i][4] - arr[i][2];
+    }
+}
 
 int main() {
     int n;
@@ -65,12 +79,14 @@ int main() {
         }
     }
 
-    bubbleSort(nums, n, 1);  
+    bubbleSort(nums, n, 1 , 0);  
+
     printf("\nAfter Bubble Sort based on Arrival Time:\n");
     printArray(nums, n);
 
-    FCFS(nums,n);
-    printf("\nAfter FCFS Function:\n");
+    // SJF(nums,n);
+    SJF(nums,n);   bubbleSort(nums,n , 0 , 0);
+    printf("\nAfter Sjf Function:\n");
     printArray(nums,n);
 
 
