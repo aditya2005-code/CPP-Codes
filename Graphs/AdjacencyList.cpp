@@ -11,6 +11,7 @@ void displayGraph(vector<vector<int>> graph)
     for(int i=0 ; i<graph.size() ; i++){
         cout<<i<<"->";
         for(int j=0 ; j<graph[i].size() ; j++){
+            cout<<i<<"->";
             cout<<graph[i][j]<<" ";
         }
     }

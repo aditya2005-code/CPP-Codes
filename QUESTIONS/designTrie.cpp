@@ -5,6 +5,9 @@ class Node{
     public:
     unordered_map<char,Node*> child;
     bool end;
+    Node(){
+        end = false;
+    }
 };
 
 class Trie{
