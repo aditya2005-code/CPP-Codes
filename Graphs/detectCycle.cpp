@@ -44,6 +44,17 @@ int main(){
     else{
         cout<<"Cycle doesnt exists"<<endl;
     }
+    //for disconnected graphs
+
+    for(int i=0 ; i<n ; i++){
+        if(!visited[i]){
+            if(cycleExists(adj , i , -1 , visited)){
+                cycle = true;
+            }
+        }
+    }
+
+    cout<<cycle<<endl;
 
     return 0;
 }
