@@ -26,7 +26,7 @@ vector<vector<int>> constructadj(int V, vector<vector<int>> &edges)
 {
     vector<vector<int>> adj(V);
     for (auto &it : edges)
-    {
+    { 
         adj[it[0]].push_back(it[1]); 
     }
     return adj;
