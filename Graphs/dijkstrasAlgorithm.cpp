@@ -23,7 +23,7 @@ void dijkstraImplem(vector<vector<Edge>>& graph , int n){
         pq.pop();
 
         for(Edge e : graph[curr.second]){
-            if(dist[e.v] > curr.first + e.wt){  // use '>' not '<'
+            if(dist[e.v] > curr.first + e.wt){  
                 dist[e.v] = curr.first + e.wt;
                 pq.push({dist[e.v], e.v});
             }
