@@ -16,9 +16,9 @@ void maximumBooks(vector<int>& books, int idx, int prev, int curr, int &res) {
 }
 
 int main() {
-    int n;
+    int n ;
     cout << "Enter the number of shelves: ";
-    cin >> n;
+    cin >> n ;
 
     vector<int> books(n);
     cout << "Enter the books in each shelf: ";
