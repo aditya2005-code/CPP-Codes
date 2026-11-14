@@ -80,7 +80,7 @@ int main(){
 
     Triangle t;
 
-    cout<<"Number of valid triangles : "<<t.validTriangles(arr);
+    cout<<"Number of valid triangles : "<<t.validTriangles(arr)<<endl;
     cout<<"Maximum perimter og triangle : "<<t.maximumTrianglePrameter(arr);
 
 

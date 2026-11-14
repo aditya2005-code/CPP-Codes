@@ -133,7 +133,6 @@ class ParkingSystem:
 
     def park(self, vehicle):
 
-        # Prevent duplicate parking
         if vehicle.vid in self.active_tickets:
             print(f"{vehicle.vname} is already parked")
             return None
@@ -142,7 +141,6 @@ class ParkingSystem:
 
         slot_heap = self.available_slots.get(vehicle_type)
 
-        # No compatible slot available
         if not slot_heap:
             print(
                 f"No {vehicle_type.value} "
@@ -150,10 +148,8 @@ class ParkingSystem:
             )
             return None
 
-        # Get minimum slot ID
         slot = heapq.heappop(slot_heap)
 
-        # Create parking ticket
         ticket = ParkingTicket(
             self.ticket_counter,
             vehicle,
@@ -162,7 +158,6 @@ class ParkingSystem:
 
         self.ticket_counter += 1
 
-        # Store active ticket
         self.active_tickets[vehicle.vid] = ticket
 
         print(
@@ -174,7 +169,6 @@ class ParkingSystem:
             f"Ticket ID: {ticket.ticket_id}"
         )
 
-        # Slot-specific behavior
         slot.provide_service(vehicle)
 
         return ticket
@@ -182,7 +176,6 @@ class ParkingSystem:
 
     def leave(self, vehicle_id):
 
-        # Get and remove active ticket
         ticket = self.active_tickets.pop(
             vehicle_id,
             None
@@ -192,12 +185,10 @@ class ParkingSystem:
             print("Vehicle is not parked")
             return None
 
-        # Close ticket
         ticket.close_ticket()
 
         slot = ticket.slot
 
-        # Return slot to correct heap
         heapq.heappush(
             self.available_slots[slot.slot_type],
             slot
